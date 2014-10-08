@@ -12,19 +12,19 @@ public class Person
     @Override
     public String toString()
     {
-        return name + "," + admin + "," + finisher + "," + analyzer + "," + creator ;
+        return name + "," + admin + "," + analyzer + "," + creator + "," + finisher ;
     }
 
     public Person( String specialPeopleString ) { //"Bob,12,12,5,6"        
         String[] splited = specialPeopleString.split(",");//splited[0] = "Bob"
         name = splited[0]; //"Bob"
         admin = Integer.parseInt( splited[1] );
-        finisher = Integer.parseInt( splited[2] );
-        analyzer = Integer.parseInt( splited[3] );
-        creator = Integer.parseInt( splited[4] );
+        analyzer = Integer.parseInt( splited[2] );
+        creator = Integer.parseInt( splited[3] );
+        finisher = Integer.parseInt( splited[4] );
     }
 
-    public Person(String name, int admin, int finisher, int analyzer, int creator)
+    public Person(String name, int admin, int analyzer, int creator, int finisher)
     {
         this.name = name;
         this.admin = admin;
