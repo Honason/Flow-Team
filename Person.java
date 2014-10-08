@@ -1,9 +1,5 @@
 package flowteam;
 
-/**
- *
- * @author pelo
- */
 public class Person
 {
     //Atributes:  Alt + insert auto generate code:
@@ -36,10 +32,6 @@ public class Person
         this.analyzer = analyzer;
         this.creator = creator;
     }
-
-
-
-
 
     public String getName()
     {
