@@ -22,7 +22,6 @@ public class Main {
                 Person tempPerson = new Person(peopleString);
                 listOfPeople.add(tempPerson);
             }
-
         }
 
         userInterface.init();

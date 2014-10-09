@@ -5,6 +5,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI extends JFrame {
     public static int activeRow = 0;
@@ -21,6 +23,20 @@ public class GUI extends JFrame {
             }
         };
         JScrollPane pane = new JScrollPane(table);
+        table.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable)e.getSource();
+                    int row = target.getSelectedRow();
+                    int column = target.getSelectedColumn();
+
+                    // do some action if appropriate column
+                    System.out.println("I clicked " + row + " row and " + column + "column.");
+                    new addPerson().editPerson(row, column);
+                }
+            }
+        });
+
         add(pane); setVisible(true);
 
         addButton = new JButton();
@@ -29,7 +45,7 @@ public class GUI extends JFrame {
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //Execute when button is pressed
-                new addPerson();
+                new addPerson().newPerson();
             }
         });
         add(addButton);
@@ -45,5 +61,14 @@ public class GUI extends JFrame {
         table.setValueAt(person.getAnalyzer(),activeRow,2);
         table.setValueAt(person.getCreator(),activeRow,3);
         table.setValueAt(person.getFinisher(),activeRow,4);
+    }
+
+    public void removeRow(int row) {
+        //table.remove(0);
+        ((DefaultTableModel)table.getModel()).removeRow(row);
+    }
+
+    public String getValue(int valX, int valY) {
+        return table.getValueAt(valX, valY).toString();
     }
 }
